@@ -1,1 +1,0 @@
-# BanqueG3
