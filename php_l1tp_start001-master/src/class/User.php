@@ -8,7 +8,7 @@ class User {
 	public $created_at;
 	public $last_ip;
 
-	public static function create($email, $password, $ip, $role = 1) {
+	public static function create($email, $password, $role = 1, $ip) {
 		$user = new User();
 		$user->email = $email;
 		$user->password = hash('sha256', $password);
