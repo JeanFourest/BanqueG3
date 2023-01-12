@@ -46,6 +46,6 @@
 		<p>Vous allez être vérifié par un manager ou un admin.</p>
 		<p>Veuillez attendre quelques instants</p>
 
-	<?php } elseif ($user->role == $role['lvl']['noVerif']) { ?>
+	<?php } elseif ($user->role == $role['lvl']['ban']) { ?>
 		<p>Vous avez été banni de ce site pour certaines raisons.</p>
 	<?php }} ?>
