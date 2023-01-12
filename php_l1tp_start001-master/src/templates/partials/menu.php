@@ -38,6 +38,7 @@
 	<?php } else { ?>
 		<li><?= $user->email; ?></li>
 		<li><a href="/actions/logout.php">Logout</a></li>
+		<li><a href="/?page=bank_account">Bank Account</a></li>
 	<?php } ?>
 	</ul>
 
