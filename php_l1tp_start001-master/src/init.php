@@ -26,10 +26,12 @@ require_once __DIR__ . '/class/User.php';
 // Inclure les managers
 require_once __DIR__ . '/class/ContactFormManager.php';
 require_once __DIR__ . '/class/UserManager.php';
+require_once __DIR__ . '/class/roleManager.php';
 
 // Initialiser les managers
 $contactFormManager = new ContactFormManager($db);
 $userManager = new UserManager($db);
+$userPeople = new roleManager($db);
 
 /* Session & Auth */
 $user = false;
