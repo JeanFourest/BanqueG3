@@ -10,14 +10,28 @@ $depos = $depoWith-> depo();
 $withs = $depoWith-> with();
 $trans = $depoWith->tran();
 $balance = $depoWith -> balances();
+
+$money = 0;
+
+foreach($depos as $depo) {
+    $money = $money + $depo["2"];
+}
+
+foreach($withs as $with) {
+    $money = $money - $with["2"];
+}
+
+var_dump($money);
+
 ?>
 
 <h1>My Bank Account</h1>
 
 
-<h2>solde : <?= $balance["0"] ?> €</h2>
+<h2>solde : <?= $money
+?> €</h2>
 
-<p>voici votre historique des déposites :</p>
+<p>voici votre historique des depositions :</p>
 <table>
     <tr>
         <th>AJOUTER</th>
@@ -30,10 +44,10 @@ $balance = $depoWith -> balances();
     foreach ($depos as $depo) {
         ?>
         <tr>
-            <td><?=$depo["2"] ?></td>
-            <td><?=$depo["3"] ?></td>
-            <td><?=$depo["4"] ?></td>
-            <td><?=$depo["6"] ?></td>
+            <td align="center">+ <?=$depo["2"] ?> €</td>
+            <td align="center"><?=$depo["3"] ?></td>
+            <td align="center"><?=$depo["4"] ?></td>
+            <td align="center"><?=$depo["6"] ?></td>
         </tr>
 
         <?php
@@ -42,7 +56,7 @@ $balance = $depoWith -> balances();
 </table><br><br>
 
 
-<p>voici votre historique des withdraws :</p>
+<p>voici votre historique des retraites :</p>
 <table>
     <tr>
         <th>RETIRER</th>
@@ -54,9 +68,9 @@ $balance = $depoWith -> balances();
     foreach ($withs as $with) {
         ?>
         <tr>
-            <td><?=$with["2"] ?></td>
-            <td><?=$with["3"] ?></td>
-            <td><?=$with["5"] ?></td>
+            <td align="center">- <?=$with["2"] ?> €</td>
+            <td align="center"><?=$with["3"] ?></td>
+            <td align="center"><?=$with["5"] ?></td>
         </tr>
 
         <?php
@@ -77,21 +91,29 @@ $balance = $depoWith -> balances();
     foreach ($trans as $tran) {
         ?>
         <tr>
-            <td><?=$with["1"] ?></td>
-            <td><?=$with["2"] ?></td>
-            <td><?=$with["4"] ?></td>
-            <td><?=$with["5"] ?></td>
+            <td align="center"><?=$with["1"] ?></td>
+            <td align="center"><?=$with["2"] ?></td>
+            <td align="center"><?=$with["4"] ?></td>
+            <td align="center"><?=$with["5"] ?></td>
         </tr>
 
         <?php
     }
     ?>
 </table>
+<br><br>
+<?php show_error(); ?>
+<?php include_once __DIR__ . '/../partials/alert_success.php'; ?>
 
-<form action="">
-    <label for=""></label>
+<form action="/actions/bank_account.php" method="post">
+    <label for="price">combien voulez vous deposer :</label>
+    <input type="text" name="price" id="price"><br>
+
+    <label for="message">mettez un message :</label>
+    <input type="text" name="message" id="message"><br>
+
+    <button type="submit">ENVOYER</button>
 </form>
-
 
 déposer
 retirer
