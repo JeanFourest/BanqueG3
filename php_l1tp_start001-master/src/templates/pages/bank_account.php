@@ -82,7 +82,7 @@ foreach($withs as $with) {
     <tr>
         <th>SENDER</th>
         <th>RECEIVER</th>
-        <th>CURRENCIE</th>
+        <th>CURRENCY</th>
         <th>TIME</th>
     </tr>
     <?php
