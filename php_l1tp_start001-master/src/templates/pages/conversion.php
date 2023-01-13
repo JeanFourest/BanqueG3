@@ -2,6 +2,8 @@
 
 $page_title = "Conversion - MonSite.com";
 
+include_once __DIR__ . '/bank_account.php';
+
 // ob_start, c'est comme si tu ouvrais les "" pour enregistrer une grosse chaine de caracteres.
 ob_start();
 ?>
@@ -19,15 +21,15 @@ ob_start();
     $bitcoin_price = $currencies -> getPrice('Bitcoin');
 ?>
 
-<p>Vous avez <?= $resultat_balance['balance'];?> euros sur votre compte.</p>
+<p>Vous avez <?= $money ;?> euros sur votre compte.</p>
 
 <p>Ce qui équivaut à :</p>
 <nav>
     <ul>
-        <li><?= $dollar_price["1"] * $resultat_balance['balance']; ?> USD</li>
-        <li><?= $sterling_price["0"] * $resultat_balance['balance']; ?> GBP</li>
-        <li><?= $yen_price["2"] * $resultat_balance['balance']; ?> JPY</li>
-        <li><?= $bitcoin_price["3"] * $resultat_balance['balance']; ?> BTC</li>
+        <li><?= $dollar_price["1"] * $money; ?> USD</li>
+        <li><?= $sterling_price["0"] * $money; ?> GBP</li>
+        <li><?= $yen_price["2"] * $money; ?> JPY</li>
+        <li><?= $bitcoin_price["3"] * $money; ?> BTC</li>
     </ul>
 </nav>
 
