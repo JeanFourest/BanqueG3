@@ -24,28 +24,27 @@ ob_start();
 <p>Ce qui équivaut à :</p>
 <nav>
     <ul>
-        <li>USD <?= $dollar_price["1"] * $resultat_balance['balance']; ?>$</li>
-        <li>GBP <?= $sterling_price["0"] * $resultat_balance['balance']; ?>£</li>
-        <li>JPY <?= $yen_price["2"] * $resultat_balance['balance']; ?>¥</li>
-        <li>BTC <?= $bitcoin_price["3"] * $resultat_balance['balance']; ?>₿</li>
+        <li><?= $dollar_price["1"] * $resultat_balance['balance']; ?> USD</li>
+        <li><?= $sterling_price["0"] * $resultat_balance['balance']; ?> GBP</li>
+        <li><?= $yen_price["2"] * $resultat_balance['balance']; ?> JPY</li>
+        <li><?= $bitcoin_price["3"] * $resultat_balance['balance']; ?> BTC</li>
     </ul>
 </nav>
 
-<p>Combien d'euros voulez-vous voir converti?</p>
+<p>Combien d'argent voulez-vous convertir et en quelle monnaie ?</p>
 
-<form action='/actions/conversion.php' method='post'>
+<form action='/actions/conversion.php' method='POST'>
     <div>
-        <input type="text" id="money_conversion" name="money_conversion">
-		<label for="money_conversion">€</label>
+        <input type="number" id="money_conversion" name="money_conversion">
+        <select name="money" id="money">
+            <option value="">Choisir une monnaie</option>
+            <option value="dollar">USD</option>
+            <option value="sterling">GBP</option>
+            <option value="yen">JPY</option>
+            <option value="bitcoin">BTC</option>
+        </select>
 	</div>
-    <select name="money" id="money">
-        <option value="">Choisir une monnaie</option>
-        <option value="dollar">USD</option>
-        <option value="livre">GBP</option>
-        <option value="yen">JPY</option>
-        <option value="bitcoin">BTC</option>
-    </select>
-    <button>Valider</button>
+    <button type="submit">Valider</button>
 </form>
 
 <?php
