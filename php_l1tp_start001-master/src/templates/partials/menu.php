@@ -39,6 +39,7 @@
 		<li><?= $user->email; ?></li>
 		<li><a href="/actions/logout.php">Logout</a></li>
 	<?php } ?>
+		<li><a href="/?page=conversion">Conversion</a></li>
 	</ul>
 
 	<?php } elseif ($user->role == $role['lvl']['noVerif']) { ?>

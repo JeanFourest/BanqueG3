@@ -12,7 +12,7 @@ require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/utils/errors.php';
 
 // pages existantes sur notre site internet
-$pages = ['home', 'contact', 'signup', 'login', 'admin_contact'];
+$pages = ['home', 'contact', 'signup', 'login', 'admin_contact', 'conversion'];
 
 // init variables vides pour le template
 $page_scripts = "";
@@ -22,6 +22,7 @@ $head_metas = "";
 // NOUVELLE LIGNE            v             v
 require_once __DIR__ . '/class/ContactForm.php';
 require_once __DIR__ . '/class/User.php';
+require_once __DIR__ . '/class/Currencies.php';
 
 // Inclure les managers
 require_once __DIR__ . '/class/ContactFormManager.php';
@@ -30,6 +31,7 @@ require_once __DIR__ . '/class/UserManager.php';
 // Initialiser les managers
 $contactFormManager = new ContactFormManager($db);
 $userManager = new UserManager($db);
+$currencies = new Currencies($db);
 
 /* Session & Auth */
 $user = false;
