@@ -155,33 +155,31 @@ ob_start();
                         <p>Utilisateur non-vérifié</p>
                     </td>
                     <td>
-                        <form>
-                            <p>Vérifier</p>
-                            <div>
-                                <form method="POST">
-                                    <input type="radio" id="positif" name="choice" value="oui">
-                                    <label for="positif">Oui</label>
-                                    <input type="radio" id="négatif" name="choice" value="non">
-                                    <label for="négatif">Non</label>
-                                    <br><br>
-                                    <input type="submit" name="verified" value="Confirmer">
-                                    <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
-                                </form>
-                                <?php
-                                    $userID = $_POST['user_id'];
-                                    if(isset($_POST["verified"])){
-                                        $choice = $_POST['choice'];
-                                        if($choice == 'oui'){
-                                            $demande = "UPDATE users SET role = 10 WHERE users.id = '{$userID}'";
-                                            $change = $db->prepare($demande);
-                                            $change->execute();
-                                        } else {
+                        <p>Vérifier</p>
+                        <div>
+                            <form method="POST">
+                                <input type="radio" id="positif" name="choice" value="oui">
+                                <label for="positif">Oui</label>
+                                <input type="radio" id="négatif" name="choice" value="non">
+                                <label for="négatif">Non</label>
+                                <br><br>
+                                <input type="submit" name="verified" value="Confirmer">
+                                <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                            </form>
+                            <?php
+                                $userID = $_POST['user_id'];
+                                if(isset($_POST["verified"])){
+                                    $choice = $_POST['choice'];
+                                    if($choice == 'oui'){
+                                        $demande = "UPDATE users SET role = 10 WHERE users.id = '{$userID}'";
+                                        $change = $db->prepare($demande);
+                                        $change->execute();
+                                    } else {
 
-                                        }
                                     }
-                                ?>
-                            </div>
-                        </form>
+                                }
+                            ?>
+                        </div>
                     </td>
                     <td>
                         <form method="POST">
