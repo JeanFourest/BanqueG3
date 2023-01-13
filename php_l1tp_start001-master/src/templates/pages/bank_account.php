@@ -100,10 +100,10 @@ foreach($withs as $with) {
     }
     ?>
 </table>
-<br><br>
+<br>
 <?php show_error(); ?>
 <?php include_once __DIR__ . '/../partials/alert_success.php'; ?>
-
+<h3>DEPOSITION</h3>
 <form action="/actions/bank_account.php" method="post">
     <label for="price">combien voulez vous deposer :</label>
     <input type="text" name="price" id="price"><br>
@@ -114,7 +114,7 @@ foreach($withs as $with) {
     <button type="submit">ENVOYER</button>
 </form>
 <br>
-<br>
+<h3>RETRAIT</h3>
 <form action="/actions/bank_accountWith.php" method="post">
     <label for="priceWith">combien voulez vous retirer :</label>
     <input type="text" name="priceWith" id="priceWith"><br>

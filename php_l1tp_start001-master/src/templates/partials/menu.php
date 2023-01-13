@@ -42,6 +42,7 @@
 		<li><a href="/actions/logout.php">Logout</a></li>
 	<?php } ?>
 		<li><a href="/?page=admin_contact">Admin Contact</a></li>
+		<li><a href="/?page=admin_panel">Admin Panel</a></li>
 	</ul>
 	<?php } elseif ($user->role == $role['lvl']['verif']) { ?>
 	<ul>
