@@ -12,7 +12,7 @@ require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/utils/errors.php';
 
 // pages existantes sur notre site internet
-$pages = ['home', 'contact', 'signup', 'login', 'admin_contact', 'conversion', 'admin_panel'];
+$pages = ['home', 'contact', 'signup', 'login', 'admin_contact', 'conversion', 'admin_panel', 'bank_account'];
 
 // init variables vides pour le template
 $page_scripts = "";
@@ -28,12 +28,14 @@ require_once __DIR__ . '/class/Currencies.php';
 require_once __DIR__ . '/class/ContactFormManager.php';
 require_once __DIR__ . '/class/UserManager.php';
 require_once __DIR__ . '/class/roleManager.php';
+require_once __DIR__ . '/class/depoWith.php';
 
 // Initialiser les managers
 $contactFormManager = new ContactFormManager($db);
 $userManager = new UserManager($db);
 $currencies = new Currencies($db);
 $userPeople = new roleManager($db);
+$depoWith = new depoWith($db);
 
 /* Session & Auth */
 $user = false;
