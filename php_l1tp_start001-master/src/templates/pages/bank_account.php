@@ -21,7 +21,6 @@ foreach($withs as $with) {
     $money = $money - $with["2"];
 }
 
-var_dump($money);
 
 ?>
 
@@ -114,9 +113,14 @@ var_dump($money);
 
     <button type="submit">ENVOYER</button>
 </form>
+<br>
+<br>
+<form action="/actions/bank_accountWith.php" method="post">
+    <label for="priceWith">combien voulez vous retirer :</label>
+    <input type="text" name="priceWith" id="priceWith"><br>
 
-déposer
-retirer
+    <button type="submit">ENVOYER</button>
+</form>
 
 <?php
 $page_content = ob_get_clean();

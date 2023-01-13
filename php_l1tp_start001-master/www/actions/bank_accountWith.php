@@ -2,19 +2,19 @@
 
 require_once __DIR__ . "/../../src/init.php";
 
-if (empty($_POST["price"])) {
+
+if (empty($_POST["priceWith"])) {
 
     error_die('Erreur du formulaire', '/?page=bank_account');
 
 
 } else {
 
-    if (filter_var($_POST["price"], FILTER_VALIDATE_INT)) {
+    if (filter_var($_POST["priceWith"], FILTER_VALIDATE_INT)) {
         $_SESSION['success_message'] = 'Message envoye!';
-        $_POST["price"] = htmlspecialchars($_POST["price"]);
-        $_POST["message"] = htmlspecialchars($_POST["message"]);
+        $_POST["priceWith"] = htmlspecialchars($_POST["priceWith"]);
 
-        $deposer = $depoWith-> deposer($_POST["price"], $_POST["message"]);
+        $retirer = $depoWith-> retirer($_POST["priceWith"]);
 
     } else {
         error_die('pas un nombre !', '/?page=bank_account');
