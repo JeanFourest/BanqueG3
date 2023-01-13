@@ -58,6 +58,14 @@
 	<?php } ?>
 	</ul>
 	<?php } elseif ($user->role == $role['lvl']['noVerif']) { ?>
+	<ul>
+	<?php if ($user === false) { ?>
+		<li><a href="/?page=login">Login</a></li>
+	<?php } else { ?>
+		<li><?= $user->email; ?></li>
+		<li><a href="/actions/logout.php">Logout</a></li>
+	<?php } ?>
+	</ul>
 		<p>Vous allez être vérifié par un manager ou un admin.</p>
 		<p>Veuillez attendre quelques instants</p>
 
