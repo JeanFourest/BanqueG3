@@ -39,16 +39,51 @@ ob_start();
                         <p>Manager</p>
                     </td>
                     <td>
-                        <label for="roles"></label>
-                        <select name="Roles" id="roles">
-                            <option value="roles">-- Choisissez un rôle --</option>
-                            <option value="Admin">Administrateur</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Client">Utilisateur vérifié</option>
-                        </select>
+                        <form method="POST">
+                            <select name="Roles">
+                                <option value="roles">-- Choisissez un rôle --</option>
+                                <option value="Admin">Administrateur</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Client">Utilisateur vérifié</option>
+                            </select>
+                            <input type="submit" name="rolesOP" value="Changer">
+                            <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                        </form>
+                        <?php
+                            $userID = $_POST['user_id'];
+                            if(isset($_POST["rolesOP"])){
+                                $roles = $_POST['Roles'];
+                                if($roles == 'Admin'){
+                                    $demande = "UPDATE users SET role = 1000 WHERE users.id = '{$userID}'";
+                                    $change = $db->prepare($demande);
+                                    $change->execute();
+                                } elseif($roles == 'Manager'){
+                                    $demande = "UPDATE users SET role = 200 WHERE users.id = '{$userID}'";
+                                    $change = $db->prepare($demande);
+                                    $change->execute();
+                                } elseif($roles == 'Client'){
+                                    $demande = "UPDATE users SET role = 10 WHERE users.id = '{$userID}'";
+                                    $change = $db->prepare($demande);
+                                    $change->execute();
+                                } else {
+
+                                }
+                            }
+                        ?>
                     </td>
                     <td>
-                        <button type="submit"><p>Bannir</p></button>
+                        <form method="POST">
+                            <input type="submit" name="submit_banOP" value="Bannir">
+                            <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                        </form>
+                        <?php
+                            $userID = $_POST['user_id'];
+                            if(isset($_POST["submit_banOP"])){
+                                $demande = "UPDATE users SET role = 0 WHERE users.id = '{$userID}'";
+                                $change = $db->prepare($demande);
+                                $change->execute();
+                            }
+                        ?>
                     </td>
                 </tr>
                 <?php
@@ -62,21 +97,49 @@ ob_start();
                         <p>Utilisateur vérifié</p>
                     </td>
                     <td>
-                        <label for="roles"></label>
-                        <select name="Roles" id="roles">
-                            <option value="roles">-- Choisissez un rôle --</option>
-                            <option value="Admin">Administrateur</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Client">Utilisateur vérifié</option>
-                        </select>
+                        <form method="POST">
+                            <select name="Roles" id="roles">
+                                <option value="roles">-- Choisissez un rôle --</option>
+                                <option value="Admin">Administrateur</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Client">Utilisateur vérifié</option>
+                            </select>
+                            <input type="submit" name="rolesMid" value="Changer">
+                            <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                        </form>
+                        <?php
+                            $userID = $_POST['user_id'];
+                            if(isset($_POST["rolesMid"])){
+                                $roles = $_POST['Roles'];
+                                if($roles == 'Admin'){
+                                    $demande = "UPDATE users SET role = 1000 WHERE users.id = '{$userID}'";
+                                    $change = $db->prepare($demande);
+                                    $change->execute();
+                                } elseif($roles == 'Manager'){
+                                    $demande = "UPDATE users SET role = 200 WHERE users.id = '{$userID}'";
+                                    $change = $db->prepare($demande);
+                                    $change->execute();
+                                } elseif($roles == 'Client'){
+                                    $demande = "UPDATE users SET role = 10 WHERE users.id = '{$userID}'";
+                                    $change = $db->prepare($demande);
+                                    $change->execute();
+                                } else {
+
+                                }
+                            }
+                        ?>
                     </td>
                     <td>
                         <form method="POST">
-                            <button type="submit"><p>Bannir</p></button>
+                            <input type="submit" name="submit_ban" value="Bannir">
+                            <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
                         </form>
                         <?php
-                            if(isset($_POST["submit"])){
-                                $demande = $this->db->prepare("SELECT users.id FROM ");
+                            $userID = $_POST['user_id'];
+                            if(isset($_POST["submit_ban"])){
+                                $demande = "UPDATE users SET role = 0 WHERE users.id = '{$userID}'";
+                                $change = $db->prepare($demande);
+                                $change->execute();
                             }
                         ?>
                     </td>
@@ -95,15 +158,44 @@ ob_start();
                         <form>
                             <p>Vérifier</p>
                             <div>
-                                <input type="radio" id="positif" name="choice" value="oui">
-                                <label for="positif">Oui</label>
-                                <input type="radio" id="négatif" name="choice" value="non">
-                                <label for="négatif">Non</label>
+                                <form method="POST">
+                                    <input type="radio" id="positif" name="choice" value="oui">
+                                    <label for="positif">Oui</label>
+                                    <input type="radio" id="négatif" name="choice" value="non">
+                                    <label for="négatif">Non</label>
+                                    <br><br>
+                                    <input type="submit" name="verified" value="Confirmer">
+                                    <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                                </form>
+                                <?php
+                                    $userID = $_POST['user_id'];
+                                    if(isset($_POST["verified"])){
+                                        $choice = $_POST['choice'];
+                                        if($choice == 'oui'){
+                                            $demande = "UPDATE users SET role = 10 WHERE users.id = '{$userID}'";
+                                            $change = $db->prepare($demande);
+                                            $change->execute();
+                                        } else {
+
+                                        }
+                                    }
+                                ?>
                             </div>
                         </form>
                     </td>
                     <td>
-                        <button type="submit"><p>Bannir</p></button>
+                        <form method="POST">
+                            <input type="submit" name="submit_ban" value="Bannir">
+                            <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                        </form>
+                        <?php
+                            $userID = $_POST['user_id'];
+                            if(isset($_POST["submit_ban"])){
+                                $demande = "UPDATE users SET role = 0 WHERE users.id = '{$userID}'";
+                                $change = $db->prepare($demande);
+                                $change->execute();
+                            }
+                        ?>
                     </td>
                 </tr>
                 <?php
@@ -120,7 +212,18 @@ ob_start();
 
                     </td>
                     <td>
-                        <button type="submit"><p>Débannir</p></button>
+                        <form method="POST">
+                            <input type="submit" name="submit_deban" value="Débannir">
+                            <input type="hidden" name="user_id" value="<?=$affichage["2"]?>">
+                        </form>
+                        <?php
+                            $userID = $_POST['user_id'];
+                            if(isset($_POST["submit_deban"])){
+                                $demande = "UPDATE users SET role = 10 WHERE users.id = '{$userID}'";
+                                $change = $db->prepare($demande);
+                                $change->execute();
+                            }
+                        ?>
                     </td>
                 </tr>
                 <?php

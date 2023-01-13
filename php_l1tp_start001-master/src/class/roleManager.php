@@ -8,7 +8,7 @@ class roleManager {
     }
   
     public function modifyRole() {
-        $demande = $this->db->prepare("SELECT users.email, users.role FROM users");
+        $demande = $this->db->prepare("SELECT users.email, users.role, users.id FROM users");
         $demande->execute();
         $aff = $demande->fetchAll();
         return $aff;
